@@ -8,9 +8,10 @@ frequency = {'a': 0, 'b': 0, 'c': 0, 'd': 0, 'e': 0, 'f': 0, 'g': 0, 'h': 0, 'i'
 splitedText = []
 
 def counter(frequencyDictionary, text):
+	freqtmp = frequencyDictionary.copy()
     for c in text:
-        frequency[c] += 1
-    return frequency
+        freqtmp[c] += 1
+    return freqtmp
 
 
 def splitter(text, length):
