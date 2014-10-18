@@ -29,6 +29,15 @@ def splitter(text, length):
     return listOfLetters
 
 
+def complianceIndex(freq):
+    tmp = 0
+    n = 0
+    for sth in freq:
+        tmp += (freq[sth]*(freq[sth]-1))
+        n += freq[sth]
+    return float(tmp) / float(n*(n-1))
+
+    
 with open(cipherTextFileName, 'r') as cipherTextFile:
     cipherText = cipherTextFile.read()
 
