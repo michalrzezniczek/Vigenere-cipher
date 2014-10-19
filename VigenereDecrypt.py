@@ -6,6 +6,9 @@ decryptedTextFileName = 'decrypted.txt'
 frequency = {'a': 0, 'b': 0, 'c': 0, 'd': 0, 'e': 0, 'f': 0, 'g': 0, 'h': 0, 'i': 0, 'j': 0, 'k': 0, 'l': 0, 'm': 0,
              'n': 0, 'o': 0, 'p': 0, 'q': 0, 'r': 0, 's': 0, 't': 0, 'u': 0, 'v': 0, 'w': 0, 'x': 0, 'y': 0, 'z': 0}
 splitedText = []
+splitedTextFreq = []
+splitedCompIndex = []
+
 
 def counter(frequencyDictionary, text):
 	freqtmp = frequencyDictionary.copy()
@@ -37,9 +40,40 @@ def complianceIndex(freq):
         n += freq[sth]
     return float(tmp) / float(n*(n-1))
 
-    
+
+def keyLength(text):
+    keylength = 0
+    k = 0
+    boolExit = True
+    while boolExit:
+        keylength += 1
+        splitedText = []
+        splitedTextFreq = []
+        splitedCompIndex = []
+        splitedText = splitter(text, keylength)
+        for i in splitedText:
+            splitedTextFreq.append(counter(frequency, i))
+        for i in splitedText:
+            splitedCompIndex.append(float(complianceIndex(splitedTextFreq[k])))
+            k += 1
+
+        k = 0
+        while k < keylength:
+            tmp = abs(float(splitedCompIndex[k]) - float(0.065))
+            if  tmp > 0.005:
+                boolExit = True
+            else:
+                boolExit = False
+            k += 1
+
+        k = 0
+
+    return keylength
+
+
 with open(cipherTextFileName, 'r') as cipherTextFile:
     cipherText = cipherTextFile.read()
+
 
 
 cipherTextFile.close()
