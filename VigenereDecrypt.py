@@ -5,9 +5,9 @@ decryptedTextFileName = 'decrypted.txt'
 
 frequency = {'a': 0, 'b': 0, 'c': 0, 'd': 0, 'e': 0, 'f': 0, 'g': 0, 'h': 0, 'i': 0, 'j': 0, 'k': 0, 'l': 0, 'm': 0,
              'n': 0, 'o': 0, 'p': 0, 'q': 0, 'r': 0, 's': 0, 't': 0, 'u': 0, 'v': 0, 'w': 0, 'x': 0, 'y': 0, 'z': 0}
-splitedText = []
-splitedTextFreq = []
-splitedCompIndex = []
+splittedText = []
+splittedTextFreq = []
+splittedCompIndex = []
 
 
 def counter(frequencyDictionary, text):
@@ -47,19 +47,19 @@ def keyLength(text):
     boolExit = True
     while boolExit:
         keylength += 1
-        splitedText = []
-        splitedTextFreq = []
-        splitedCompIndex = []
-        splitedText = splitter(text, keylength)
-        for i in splitedText:
-            splitedTextFreq.append(counter(frequency, i))
-        for i in splitedText:
-            splitedCompIndex.append(float(complianceIndex(splitedTextFreq[k])))
-            k += 1
+        splittedText = []
+        splittedTextFrteq = []
+        splittedCompIndex = []
+        splittedText = splitter(text, keylength)
+        for i in splittedText:
+            splittedTextFreq.append(counter(frequency, i))t
+        for i in splittedText:
+            splittedCompIndex.append(float(complianceIndex(splittedTextFreq[k])))
+            k += t1
 
         k = 0
         while k < keylength:
-            tmp = abs(float(splitedCompIndex[k]) - float(0.065))
+            tmp = abs(float(splittedCompIndex[k]) - float(0.065))
             if  tmp > 0.005:
                 boolExit = True
             else:
