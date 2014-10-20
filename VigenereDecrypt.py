@@ -83,6 +83,33 @@ def moveRight(freq, amount):
         i += 1
     return freqtmp
 
+def mutualComplianceIndex(freq0, freq1):
+    tmp = 0
+    n0 = 0
+    n1 = 0
+    letters = sorted(freq0)
+    j = 0
+    boolExit = False
+    i = 0
+    freq1AsList = moveRight(freq1, i)
+    while not boolExit:
+        for letter in letters:
+            tmp += freq0[letter] * freq1AsList[j]
+            n0 += freq0[letter]
+            n1 += freq1AsList[j]
+            j += 1
+        tmp2 = float(tmp) / float(n0 * n1)
+        if float(abs(tmp2 - float(0.065))) <= 0.005:
+            boolExit = True
+        else:
+            i += 1
+            freq1AsList = moveRight(freq1, i)
+            j = 0
+            tmp = 0
+            n0 = 0
+            n1 = 0
+    return i
+
 
 with open(cipherTextFileName, 'r') as cipherTextFile:
     cipherText = cipherTextFile.read()
