@@ -71,6 +71,19 @@ def keyLength(text):
     return keylength
 
 
+def moveRight(freq, amount):
+    freqtmp = []
+    i = sorted(freq)
+    for sth in i:
+        freqtmp.append(freq[sth])
+    i = 0
+    while i < amount:
+        #freqtmp.append(freqtmp.pop(0))
+        freqtmp.insert(0, freqtmp.pop(len(freqtmp)-1))
+        i += 1
+    return freqtmp
+
+
 with open(cipherTextFileName, 'r') as cipherTextFile:
     cipherText = cipherTextFile.read()
 
